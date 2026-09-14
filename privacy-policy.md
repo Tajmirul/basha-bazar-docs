@@ -1,6 +1,6 @@
 # Privacy Policy — Basha Bazar
 
-**Last updated:** 2 September, 2026
+**Last updated:** 15 September, 2026
 
 Basha Bazar ("the app", "we") helps people find rental houses ("to-lets") on foot in
 Bangladesh. It records the route you walk, lets you pin to-lets you find, and lets you
@@ -64,6 +64,35 @@ below.
 The app keeps a local database on your device holding pending changes that have not yet
 been uploaded, so it works offline. This is removed when you uninstall the app.
 
+### Usage analytics and session recording
+
+To understand how the app is used and where it is confusing or broken, we use
+**PostHog**. It collects:
+
+| Data | Detail |
+|---|---|
+| Screens you open and buttons you tap | Screen name and control name only |
+| A small set of app events | e.g. a walk started, a to-let saved, a phone-number scan — recorded as counts and yes/no flags |
+| A recording of your screen while using the app | See the masking rules below |
+| Device and app information | Device model, operating system version, app version, language |
+| Your account id, email and name | So a recording can be linked to your account |
+
+**Screen recordings are masked.** Before anything leaves your device, the app hides:
+
+- every photo, including to-let photos and pictures of signs you scan,
+- everything you type — rent, contact number, details,
+- contact phone numbers shown on a to-let's page.
+
+These appear as blank blocks in the recording. What the recording does show is the
+layout you saw, where you tapped, and the map as displayed on your screen — which can
+reveal the area you were in while using the app.
+
+App events never include a rent amount, a phone number, a photo, free text you wrote,
+or your coordinates.
+
+We use this only to improve the app. It is not used for advertising, and we do not
+sell it.
+
 ---
 
 ## 2. Phone numbers and other people's information
@@ -103,6 +132,7 @@ to other users.
 | Public to-let contributions and their photos | All users, and anyone using the app's public data |
 | Private to-let contributions | Only you |
 | Your scan history and scanned images | Only you and us |
+| Your usage events and masked screen recordings | Only you and us (held by PostHog on our behalf) |
 
 ### An important limitation about photos
 
@@ -130,9 +160,10 @@ Sub-processors:
 | Google (Sign-In) | Authentication | Email, name, account id |
 | Google (Maps) | Map display | Map requests from your device |
 | Google (Gemini API) | Phone-number scanning | Photos you choose to scan |
+| PostHog | Usage analytics and masked session recordings | Screens, taps, app events, device info, your account id/email/name |
 
-We do not use advertising networks or third-party analytics, and we do not sell your
-data or share it for advertising.
+We do not use advertising networks, and we do not sell your data or share it for
+advertising.
 
 ---
 
@@ -143,6 +174,10 @@ data or share it for advertising.
 - **Deleting a to-let *place* you created also removes contributions other users added
   to that place**, because contributions are attached to the place.
 - Local device data is removed when you uninstall the app.
+- **Usage analytics and screen recordings are held separately, by PostHog.** Screen
+  recordings expire automatically after the retention period set on our PostHog
+  project; usage events are kept longer, to compare one release against another.
+  These are not removed by deleting a to-let or a trail — see the next section.
 
 ---
 
@@ -151,6 +186,11 @@ data or share it for advertising.
 **In the app:** open **Profile → Delete account**. This permanently deletes your
 account, your to-lets and contributions, your photos, your recorded routes, and your
 scan history. It cannot be undone.
+
+**Analytics and screen recordings are not covered by that button.** They live with
+PostHog rather than in our database, so deleting your account does not erase them.
+Email tasmirolislam@gmail.com and we will delete the analytics profile and recordings
+linked to your account.
 
 **By request:** email tasmirolislam@gmail.com, or use the form at
 https://tajmirul.github.io/basha-bazar-legal/delete-account. We will confirm your identity and delete your data.
@@ -167,6 +207,9 @@ To delete individual items instead, delete the contribution or trail in the app.
 - **Notifications** — used only for the ongoing notification shown while a walk is
   recording.
 - **Public or private** — set per contribution, and changeable afterwards.
+- **Usage analytics and screen recording** — there is no in-app switch for this yet.
+  Email tasmirolislam@gmail.com to be excluded, and we will stop recording your
+  sessions and delete what has already been collected.
 
 You can revoke any permission at any time in Android or iOS settings.
 
