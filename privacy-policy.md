@@ -1,6 +1,6 @@
 # Privacy Policy — Basha Bazar
 
-**Last updated:** 15 September, 2026
+**Last updated:** 10 October, 2026
 
 Basha Bazar ("the app", "we") helps people find rental houses ("to-lets") on foot in
 Bangladesh. It records the route you walk, lets you pin to-lets you find, and lets you
@@ -72,7 +72,7 @@ To understand how the app is used and where it is confusing or broken, we use
 | Data | Detail |
 |---|---|
 | Screens you open and buttons you tap | Screen name and control name only |
-| A small set of app events | e.g. a walk started, a to-let saved, a phone-number scan — recorded as counts and yes/no flags |
+| The actions you take in the app | Signing in, opening a to-let, saving or deleting a contribution, starting and stopping a walk, scanning a phone number, reporting a listing, syncing — each recorded as counts and yes/no flags |
 | A recording of your screen while using the app | See the masking rules below |
 | Device and app information | Device model, operating system version, app version, language |
 | Your account id, email and name | So a recording can be linked to your account |
@@ -134,6 +134,16 @@ to other users.
 | Your scan history and scanned images | Only you and us |
 | Your usage events and masked screen recordings | Only you and us (held by PostHog on our behalf) |
 
+### When you share a to-let
+
+The app can open your phone's share sheet so you can send a to-let, or the app
+itself, to someone else. Nothing is sent until you choose an app and send it, and
+what we put in the message is deliberately limited: the rent and room counts, a
+Google Maps link to the location, and a link to the app. **The landlord's phone
+number is never included** — whoever you send it to can install the app and find
+the contact there. Once you send a message, what happens to it is governed by the
+app you sent it with, not by this policy.
+
 ### An important limitation about photos
 
 Photos are stored in a **publicly readable** storage bucket. File paths are long random
@@ -162,12 +172,60 @@ Sub-processors:
 | Google (Gemini API) | Phone-number scanning | Photos you choose to scan |
 | PostHog | Usage analytics and masked session recordings | Screens, taps, app events, device info, your account id/email/name |
 
-We do not use advertising networks, and we do not sell your data or share it for
-advertising.
+We do not use advertising networks, and **we do not sell your personal data** or
+share it for advertising. We may publish anonymous aggregate statistics derived
+from public contributions — see section 6.
 
 ---
 
-## 6. Retention
+## 6. Aggregate statistics
+
+The app's purpose is to map rental availability, so the **public** contributions users
+make have value as a picture of the rental market — for example, what people are asking
+for a two-bedroom flat in a given area this month.
+
+We may compute, publish, share and sell **aggregate statistics** derived from public
+contributions. Examples of what that means:
+
+- median or average asking rent by area, bedroom count and month
+- the number of to-lets recorded in an area over a period
+- how asking rents change over time
+
+### What aggregate statistics never contain
+
+They are **statistics about groups of listings, not records about people**. They never
+include:
+
+- phone numbers or any other contact details,
+- photographs,
+- free-text details you wrote,
+- the exact coordinates or street address of an individual to-let,
+- your name, email, account identifier, or any other contributor identity,
+- your recorded walking routes, which remain private to you,
+- anything from a contribution you marked **private**.
+
+We do not publish a figure computed from fewer than **five** separate contributions, so
+that no single listing or contributor can be identified from a published number.
+
+**We do not sell your personal data, your contributions, or your contact list.** This
+section covers derived, anonymous numbers only.
+
+### Your control
+
+- A contribution marked **private** is never used. Switch a contribution to private at
+  any time and it stops being counted from then on.
+- Deleting a contribution removes it from statistics computed afterwards. Figures
+  already published cannot be recalled.
+
+### Effective date
+
+This section applies to contributions made **on or after 10 October, 2026**.
+Contributions made before that date were collected under a policy that did not permit
+this, and are not used for statistics that we publish, share or sell.
+
+---
+
+## 7. Retention
 
 - Data stays until you delete it or delete your account.
 - Deleting a to-let contribution removes it, its photos, and its scan records.
@@ -181,7 +239,7 @@ advertising.
 
 ---
 
-## 7. Deleting your data
+## 8. Deleting your data
 
 **In the app:** open **Profile → Delete account**. This permanently deletes your
 account, your to-lets and contributions, your photos, your recorded routes, and your
@@ -199,14 +257,16 @@ To delete individual items instead, delete the contribution or trail in the app.
 
 ---
 
-## 8. Your choices
+## 9. Your choices
 
 - **Location permission** — you may deny it, or grant foreground-only. Route recording
   needs the "Allow all the time" setting; the rest of the app works without it.
 - **Photo and camera permission** — only requested when you attach or scan a photo.
 - **Notifications** — used only for the ongoing notification shown while a walk is
   recording.
-- **Public or private** — set per contribution, and changeable afterwards.
+- **Public or private** — set per contribution, and changeable afterwards. This is
+  also the switch that controls whether a contribution counts towards the aggregate
+  statistics described in section 6.
 - **Usage analytics and screen recording** — there is no in-app switch for this yet.
   Email tasmirolislam@gmail.com to be excluded, and we will stop recording your
   sessions and delete what has already been collected.
@@ -215,7 +275,7 @@ You can revoke any permission at any time in Android or iOS settings.
 
 ---
 
-## 9. Security
+## 10. Security
 
 Access is controlled per user at the database level, so one user cannot read or modify
 another user's private data. Traffic between the app and our backend is encrypted with
@@ -225,7 +285,7 @@ No system is perfectly secure, and we cannot guarantee absolute security.
 
 ---
 
-## 10. Children
+## 11. Children
 
 The app is not intended for children. You must be 18 or older to use it. We do not
 knowingly collect data from children. If you believe a child has provided us data,
@@ -233,7 +293,7 @@ contact tasmirolislam@gmail.com.
 
 ---
 
-## 11. Changes
+## 12. Changes
 
 We may update this policy. Material changes will be announced in the app or on the
 store listing, and the "Last updated" date above will change.
