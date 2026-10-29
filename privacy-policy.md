@@ -1,6 +1,6 @@
 # Privacy Policy — Basha Bazar
 
-**Last updated:** 10 October, 2026
+**Last updated:** 29 October, 2026
 
 Basha Bazar ("the app", "we") helps people find rental houses ("to-lets") on foot in
 Bangladesh. It records the route you walk, lets you pin to-lets you find, and lets you
@@ -59,6 +59,27 @@ Photos you attach are uploaded and stored. You may also photograph a "To Let" si
 the app can read the phone number from it — see *Automated phone-number scanning*
 below.
 
+### Flat alerts and notifications
+
+If you save a flat alert, we store the area you chose (a point and a radius) and any
+limits you set (maximum rent, minimum rooms, who you are renting as, a label). We use it
+only to tell you when a matching to-let is pinned. If you allow notifications, we store
+a push token for your device so we can send them. Notifications are sent through Expo
+and Google's Firebase Cloud Messaging. They never contain anyone's phone number.
+
+### To-lets you open
+
+When you open a to-let that you did not add, we record that you opened it, once per
+day. We use this only to show, on the to-let's page, how many different people have
+viewed it. **Nobody is ever shown who opened a to-let**, only the number.
+
+### Reports
+
+If you report a to-let, we store the reason you chose and any note you write. Other
+users see **how many people reported a to-let and for which reasons** (for example
+"Already rented (2)"), so they can judge it. They never see who reported it or the
+note.
+
 ### Device storage
 
 The app keeps a local database on your device holding pending changes that have not yet
@@ -80,8 +101,14 @@ To understand how the app is used and where it is confusing or broken, we use
 **Screen recordings are masked.** Before anything leaves your device, the app hides:
 
 - every photo, including to-let photos and pictures of signs you scan,
-- everything you type — rent, contact number, details,
-- contact phone numbers shown on a to-let's page.
+- what you type into rent, contact and details, and the note on a report,
+- contact phone numbers shown on a to-let's page,
+- the name of whoever added a to-let's information,
+- your own name and email on your profile,
+- the exact coordinates of a to-let you are adding.
+
+Labels, buttons and headings in the app are not hidden — without them a recording
+shows nothing we can learn from.
 
 These appear as blank blocks in the recording. What the recording does show is the
 layout you saw, where you tapped, and the map as displayed on your screen — which can
@@ -90,8 +117,31 @@ reveal the area you were in while using the app.
 App events never include a rent amount, a phone number, a photo, free text you wrote,
 or your coordinates.
 
-We use this only to improve the app. It is not used for advertising, and we do not
-sell it.
+We use this only to improve the app. It is never shared with an advertising network
+and we do not sell it. Measuring ad installs is a separate thing, described next.
+
+### Advertising and install measurement
+
+We advertise the app on **Meta** (Facebook and Instagram). When someone installs the
+app after tapping one of our ads, we need to know which ad brought them — otherwise
+there is no way to tell which advertising is worth paying for. For this we use
+**AppsFlyer**, a measurement provider. On first launch the app sends AppsFlyer:
+
+- your device's **advertising ID** — a resettable identifier Android gives apps for
+  advertising, not your name, email or account,
+- device and install information: device model, OS version, Play install referrer,
+  country, IP address,
+- the fact that the app was installed and opened.
+
+AppsFlyer reports back to us, and to the ad network that showed the ad, that an
+install happened and which campaign it came from.
+
+**This measures installs only.** No activity inside the app is sent — not a to-let, a
+rent amount, a phone number, a photo, a note, or any location. The app sends
+AppsFlyer no events of its own at all, and we have not enabled any.
+
+You can delete or reset your advertising ID, or opt out of ads personalisation, in
+Android settings — see section 9.
 
 ---
 
@@ -133,6 +183,9 @@ to other users.
 | Private to-let contributions | Only you |
 | Your scan history and scanned images | Only you and us |
 | Your usage events and masked screen recordings | Only you and us (held by PostHog on our behalf) |
+| Your flat alerts and push token | Only you and us |
+| Which to-lets you opened | Only us. All users see only how many people viewed each to-let |
+| Your reports | Only you and us. Other users see only the count per reason |
 
 ### When you share a to-let
 
@@ -170,11 +223,16 @@ Sub-processors:
 | Google (Sign-In) | Authentication | Email, name, account id |
 | Google (Maps) | Map display | Map requests from your device |
 | Google (Gemini API) | Phone-number scanning | Photos you choose to scan |
+| Expo and Google (Firebase Cloud Messaging) | Delivering notifications | Push token and the notification text |
 | PostHog | Usage analytics and masked session recordings | Screens, taps, app events, device info, your account id/email/name |
+| AppsFlyer | Measuring which ad produced an install | Advertising ID, device and install information, IP address |
+| Meta (Facebook/Instagram) | Reporting installs produced by ads we ran | Advertising ID and the install event, via AppsFlyer |
 
-We do not use advertising networks, and **we do not sell your personal data** or
-share it for advertising. We may publish anonymous aggregate statistics derived
-from public contributions — see section 6.
+We advertise the app on Meta, and share the install measurement described in
+section 1 with AppsFlyer and the ad network. That is the only data we share for
+advertising: nothing you enter in the app, and no location, ever goes to an ad
+network. **We do not sell your personal data.** We may publish anonymous aggregate
+statistics derived from public contributions — see section 6.
 
 ---
 
@@ -236,6 +294,10 @@ this, and are not used for statistics that we publish, share or sell.
   recordings expire automatically after the retention period set on our PostHog
   project; usage events are kept longer, to compare one release against another.
   These are not removed by deleting a to-let or a trail — see the next section.
+- **Install measurement is held separately, by AppsFlyer**, for the retention period
+  set on our AppsFlyer account. It is tied to an advertising ID, not to your account,
+  so deleting your account does not delete it; resetting your advertising ID breaks
+  the link to your device.
 
 ---
 
@@ -270,6 +332,9 @@ To delete individual items instead, delete the contribution or trail in the app.
 - **Usage analytics and screen recording** — there is no in-app switch for this yet.
   Email tasmirolislam@gmail.com to be excluded, and we will stop recording your
   sessions and delete what has already been collected.
+- **Advertising ID** — Android **Settings → Privacy → Ads** lets you delete or reset
+  your advertising ID and opt out of ads personalisation. Delete it and install
+  measurement can no longer identify your device.
 
 You can revoke any permission at any time in Android or iOS settings.
 
