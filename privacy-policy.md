@@ -1,6 +1,6 @@
 # Privacy Policy — Basha Bazar
 
-**Last updated:** 29 October, 2026
+**Last updated:** 12 November, 2026
 
 Basha Bazar ("the app", "we") helps people find rental houses ("to-lets") on foot in
 Bangladesh. It records the route you walk, lets you pin to-lets you find, and lets you
@@ -25,9 +25,30 @@ When you sign in with Google we receive and store:
 | Email address | Identifies your account |
 | Name | Shown as the contributor name on to-lets you share publicly |
 | Google account identifier | Links your data to your account |
+| Your mobile phone number | One account per person, so fake or harmful listings can be traced and a ban on an account holds. Never shown to other users |
 
 There is no other way to use the app — an account is required, and we do not support
 anonymous use.
+
+### Phone verification
+
+Before you can use the app you verify a Bangladeshi mobile number. We send a one-time
+code to it by SMS through **sms.net.bd**, a Bangladeshi SMS provider, and you enter
+the code (on Android the app can read that one message itself; see below). We store:
+
+| Data | Detail |
+|---|---|
+| Your verified phone number | Kept with your account. One number can verify only one account |
+| The codes we sent | Stored only in scrambled (hashed) form, never readable, with when they were sent and how many tries were made. A code expires after 5 minutes |
+
+**Reading the code on Android.** The app uses Google Play services' SMS Retriever,
+which passes the app only the one message that carries our code and a tag identifying
+this app. The app does **not** get permission to read your other text messages, and
+you are not asked for it. You can always type the code instead.
+
+We use your number only to verify your account and to protect other users from abuse.
+We do not send you marketing messages and do not share your number with other users,
+advertisers or anyone else except sms.net.bd, which delivers the code.
 
 ### Location
 
@@ -79,6 +100,10 @@ If you report a to-let, we store the reason you chose and any note you write. Ot
 users see **how many people reported a to-let and for which reasons** (for example
 "Already rented (2)"), so they can judge it. They never see who reported it or the
 note.
+
+A **"Wrong number"** report works straight away: the phone numbers on that to-let are
+removed from it, and cannot be added back to it. We keep a copy of the removed number
+and of who added it, visible only to us, in case the listing was abuse.
 
 ### Device storage
 
@@ -156,7 +181,8 @@ already publicly displayed — for example, written on a "To Let" sign visible f
 street — and do not enter it if you have been asked not to share it.
 
 If you are the owner of a phone number published in the app and want it removed,
-contact us at tasmirolislam@gmail.com and we will remove it.
+report the to-let in the app as **"Wrong number"**: the number is removed from it
+immediately. You can also contact us at tasmirolislam@gmail.com and we will remove it.
 
 ---
 
@@ -177,6 +203,7 @@ to other users.
 | Data | Who can see it |
 |---|---|
 | Your email and Google account id | Only you and us |
+| Your verified phone number | Only you and us |
 | Your name | Other users, on to-lets you make public |
 | Your recorded walking routes | **Only you** |
 | Public to-let contributions and their photos | All users, and anyone using the app's public data |
@@ -221,8 +248,10 @@ Sub-processors:
 |---|---|---|
 | Supabase | Database, file storage, authentication | All data described above |
 | Google (Sign-In) | Authentication | Email, name, account id |
+| sms.net.bd | Sending the phone-verification SMS | Your phone number and the one-time code |
 | Google (Maps) | Map display | Map requests from your device |
 | Google (Gemini API) | Phone-number scanning | Photos you choose to scan |
+| Google (Play services, SMS Retriever) | Handing the verification SMS to the app on Android | The one verification message, on your device |
 | Expo and Google (Firebase Cloud Messaging) | Delivering notifications | Push token and the notification text |
 | PostHog | Usage analytics and masked session recordings | Screens, taps, app events, device info, your account id/email/name |
 | AppsFlyer | Measuring which ad produced an install | Advertising ID, device and install information, IP address |
@@ -304,8 +333,8 @@ this, and are not used for statistics that we publish, share or sell.
 ## 8. Deleting your data
 
 **In the app:** open **Profile → Delete account**. This permanently deletes your
-account, your to-lets and contributions, your photos, your recorded routes, and your
-scan history. It cannot be undone.
+account, your verified phone number, your to-lets and contributions, your photos,
+your recorded routes, and your scan history. It cannot be undone.
 
 **Analytics and screen recordings are not covered by that button.** They live with
 PostHog rather than in our database, so deleting your account does not erase them.
